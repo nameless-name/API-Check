@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Landing } from './components/Landing';
 import { Dashboard } from './components/Dashboard';
 
 const App: React.FC = () => {
-  const [hasEntered, setHasEntered] = useState(false);
   // Initialize Theme with immediate system detection
   const [theme, setTheme] = useState<'light' | 'dark'>(() => {
     if (typeof window !== 'undefined') {
@@ -26,13 +24,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <>
-      {!hasEntered ? (
-        <Landing onEnter={() => setHasEntered(true)} />
-      ) : (
-        <Dashboard toggleTheme={toggleTheme} isDark={theme === 'dark'} />
-      )}
-    </>
+    <Dashboard toggleTheme={toggleTheme} isDark={theme === 'dark'} />
   );
 };
 
